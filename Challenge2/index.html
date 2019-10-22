@@ -1,0 +1,20 @@
+<div id="challenge">
+
+    <div>
+        <button v-on:click="showAlert()">
+            Show alert
+        </button>
+    </div>
+    <div>
+        <input type="text" v-on:keydown="keepValue($event)">
+        <p> {{value}} </p>
+    </div>
+
+    <div>
+        <input type="text" v-on:keypress.enter="keepValue($event)">
+        <p> {{value}} </p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<script src="app.js"></script>

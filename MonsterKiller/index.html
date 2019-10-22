@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="row  mx-auto">
+                <div class="col-5">
+                    <label>Player </label>
+                    <div class="progress" style="height: 30px;">
+                        <div class="progress-bar" role="progressbar" :style="playerProgressLife" aria-valuenow="25"
+                            :class="[{'bg-success': playerLife > 19}, {'bg-danger': playerLife < 20}]" aria-valuemin="0"
+                            aria-valuemax="100">{{playerLife < 0 ? 0 : playerLife }}%</div>
+                    </div>
+                </div>
+                <div class="col-6 offset-md-1">
+                    <label >Monster </label>
+                    <div class="progress" style="height: 30px;">
+                        <div class="progress-bar"
+                            :class="[{'bg-success': monsterLife > 19}, {'bg-danger': monsterLife < 20}]"
+                            role="progressbar" :style="monsterProgressLife" aria-valuenow="25" aria-valuemin="0"
+                            aria-valuemax="100">{{monsterLife < 0 ? 0 : monsterLife }}%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3" v-if="gameResult == 'Looser'">
+        <div class="card-body mx-auto">
+            <div class="alert alert-danger" role="alert">
+                Voce perdeu! :(
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3" v-if="gameResult == 'Winner'">
+        <div class="card-body mx-auto">
+            <div class="alert alert-success" role="alert">
+                Voce Venceu! :(
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3">
+        <div class="card-body mx-auto">
+            <template v-if="!gameStarted">
+                <button type="button" class="btn btn-primary" @click="startGame">
+                    Iniciar Jogo
+                </button>
+            </template>
+            <template v-else>
+                <button type="button" class="btn btn-danger" @click="attack">
+                    Attack
+                </button>
+                <button type="button" class="btn btn-warning" @click="specialAttack">
+                    Special Attack
+                </button>
+                <button type="button" class="btn btn-success" @click="heal">Heal</button>
+                <button type="button" class="btn btn-secondary" @click="QuitGame">Quit</button>
+            </template>
+        </div>
+    </div>
+    <div class="card" v-show="gameHistory.length">
+        <div class="card-body">
+            <template v-for="action in gameHistory.slice().reverse()">
+                <div class="alert" style="width: 100%;" role="alert"
+                    :class="[{'alert-danger': action.origin == 'monster'}, {'alert-success': action.origin == 'player'}]">
+                    {{ action.actionText }}
+                </div>
+            </template>
+        </div>
+    </div>
+</div>
+
+
+<script src="app.js"></script>

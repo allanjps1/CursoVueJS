@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button type="button" v-on:click="plus">
+            Aumentar
+        </button>
+        <button type="button" v-on:click="cont2++">
+            Aumentar
+        </button>
+        <button type="button" v-on:click="minus">
+            Diminuir
+        </button>
+        <p>Contador {{ cont }} | {{ cont2 }}</p>
+        <p>Resultado {{ resultado }}</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                cont: 0,
+                cont2: 0,
+                result: ""
+            },
+            computed:{
+                resultado() {
+                    console.log("chamado");
+                    return this.result = this.cont > 5 ? "Maior que 5" : "Menor que 5";
+                }
+            },
+            methods: {
+                plus() {
+                    this.cont++;
+                },
+                minus() {
+                    this.cont--;
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>

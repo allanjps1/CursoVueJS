@@ -1,0 +1,34 @@
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<div id="app">
+    <template v-if="logged">
+        <p>Logged User: {{ userName }}</p>
+        <p>Profile: Admin</p>
+    </template>
+    <p v-else-if="anonymous">Browsing as anonymous</p>
+    <p v-else>Nenhum usuário logado</p>
+    <button @click="logInOrLogout">{{ logged ? "Logout" : "Log In" }}</button>
+    <input type="checkbox" v-model="anonymous">
+    <hr>
+    <footer v-show="logged">
+        Developed for you!
+    </footer>
+</div>
+
+<script>
+    var viewModel = new Vue({
+        el: "#app",
+        data: {
+            userName: "Allan Jordan",
+            logged: false,
+            anonymous: false,
+        },
+        methods: {
+            logInOrLogout() {
+                this.logged = !this.logged;
+            }
+        }
+    })
+</script>

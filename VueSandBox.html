@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-on:input="changeData">
+        <button type="button" v-on:click="buttonClick">
+            Outro teste
+        </button>
+        <button type="button" v-on:click="buttonClick2" name="vacilao">
+            {{ texto() }}
+        </button>
+        <p>
+            {{ message }}
+        </p>
+        <p>
+            <a :href="link">google</a>
+        </p>
+        <div v-html="htmlExample"></div>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                message: "Ceara vacilao",
+                link: "http://google.com",
+                htmlExample: '<div style="background:red; height: 100px; width: 100px"></div>'
+            },
+            methods: {
+                changeData(event) {
+                    this.message = event.target.value;
+                },
+                texto() {
+                    return "Bota de Teste";
+                },
+                buttonClick() {
+                    alert("olha o click ai" + this.message);
+                },
+                buttonClick2(event) {
+                    alert(event.target.name);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

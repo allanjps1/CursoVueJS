@@ -1,0 +1,46 @@
+#efeito {
+	width: 100px;
+	height: 100px;
+	border: 1px solid black;
+}
+
+.destaque {
+	background-color: red;
+	width: 200px !important;
+}
+
+.encolher {
+	background-color: gray;
+	width: 50px !important;
+}
+
+.classeTamanho{
+	width: 100px;
+	height: 100px;
+}
+
+.classeCor{
+	background-color: purple;
+}
+
+.estilo1{
+	background-color: red;
+	width: 50px;
+	height: 50px;
+}
+
+.estilo2{
+	background-color: yellow;
+	width: 100px;
+	height: 100px;
+}
+
+.trueStyle{
+	width: 150px;
+	height: 200px;
+}
+
+.falseStyle{
+	width: 120px;
+	height: 150px;
+}

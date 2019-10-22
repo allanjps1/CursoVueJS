@@ -1,0 +1,65 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<style>
+    .caixas {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .demo {
+        width: 100px;
+        height: 100px;
+        background-color: grey;
+    }
+
+    .c1 {
+        background-color: purple;
+    }
+
+    .c2 {
+        background-color: green;
+    }
+
+    .c3 {
+        background-color: black;
+    }
+</style>
+
+<div id="app">
+    <div class="caixas">
+        <div class="demo" :style="estiloGiro" :class="{'c1':aplicarC1}" @click="aplicarC1 = !aplicarC1" ></div>
+        <div class="demo" :class="estilo2" @click="aplicarC2 = !aplicarC2"></div>
+        <div class="demo"></div>
+    </div>
+    <button type="button" @click="rotacionar">
+        Girar
+    </button>
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            aplicarC1: false,
+            aplicarC2: false,
+            graus: 10,
+            
+        },
+        computed: {
+            estilo2() {
+                return {
+                    c1: this.aplicarC2,
+                    c2: !this.aplicarC2
+                }
+            },
+            estiloGiro(){
+                return 'transform: rotate(' + this.graus + 'deg)'
+            }
+        },
+        methods:{
+            rotacionar(){
+                this.graus += 5;
+            },
+        }
+    })
+</script>

@@ -1,0 +1,28 @@
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<div id="app">
+    <ul>
+        <li v-for="(color, i) in colors">{{ i }} - {{  color }}</li>
+    </ul>
+    <ul>
+        <li v-for="people in peoples">{{ people.name }}</li>
+    </ul>
+    <template v-for="(color, i) in colors">
+        <h1>{{ cor }}</h1>
+    </template>
+</div>
+
+<script>
+    var viewModel = new Vue({
+        el: "#app",
+        data: {
+            colors: ['red', 'blue', 'purple', 'black'],
+            peoples:[
+                { name: "Allan", age: 24  },
+                { name: "Miguel", age: 3  }
+            ]
+        }
+    })
+</script>
