@@ -1,7 +1,10 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import App from './App.vue';
+import Contador from './Contador.vue';
 
-Vue.config.productionTip = false
+
+Vue.config.productionTip = false;
+Vue.componente('app-contador', Contador);
 
 new Vue({
   render: h => h(App),
